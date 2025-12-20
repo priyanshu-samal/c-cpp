@@ -4,7 +4,33 @@
 
 #undef main
 
-void create
+struct Circle {
+    int x;
+    int y;
+    int radius;
+};
+
+void FillCircle(SDL_Surface *surface, struct Circle circle, Uint32 color) {
+    int x0 = circle.x;
+    int y0 = circle.y;
+    int r  = circle.radius;
+
+    Uint32 *pixels = (Uint32 *)surface->pixels;
+
+    for (int y = -r; y <= r; y++) {
+        for (int x = -r; x <= r; x++) {
+            if (x*x + y*y <= r*r) {
+                int px = x0 + x;
+                int py = y0 + y;
+
+                if (px >= 0 && px < surface->w &&
+                    py >= 0 && py < surface->h) {
+                    pixels[py * surface->w + px] = color;
+                }
+            }
+        }
+    }
+}
 
 int main(void)
 {
@@ -14,7 +40,7 @@ int main(void)
     }
 
     SDL_Window *window = SDL_CreateWindow(
-        "Bounce",
+        "Bouncing Ball",
         SDL_WINDOWPOS_CENTERED,
         SDL_WINDOWPOS_CENTERED,
         800,
@@ -30,7 +56,7 @@ int main(void)
 
     SDL_Surface *surface = SDL_GetWindowSurface(window);
 
-    SDL_Rect rect = {300, 300, 20, 20};
+    struct Circle ball = {400, 300, 10};
     int vx = 4;
     int vy = 4;
 
@@ -44,20 +70,22 @@ int main(void)
         }
 
         
-        rect.x += vx;
-        rect.y += vy;
+        ball.x += vx;
+        ball.y += vy;
 
         
-        if (rect.x <= 0 || rect.x + rect.w >= surface->w)
+        if (ball.x - ball.radius <= 0 || ball.x + ball.radius >= surface->w)
             vx = -vx;
-        if (rect.y <= 0 || rect.y + rect.h >= surface->h)
+        if (ball.y - ball.radius <= 0 || ball.y + ball.radius >= surface->h)
             vy = -vy;
 
         
         SDL_FillRect(surface, NULL, 0x000000);
 
         
-        SDL_FillRect(surface, &rect, 0xFFFFFFFF);
+        SDL_LockSurface(surface);
+        FillCircle(surface, ball, 0xFFFFFFFF);
+        SDL_UnlockSurface(surface);
 
         SDL_UpdateWindowSurface(window);
         SDL_Delay(16); 
