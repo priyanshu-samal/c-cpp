@@ -236,8 +236,12 @@ Ping Pong/
 
 ## Chapter 4: Bouncing Ball
 
+[**View Gameplay Demo on X 🚀**]()
+
 ### Overview
 **Bouncing Ball** is a physics simulation that models gravity and momentum. It renders a red ball that accelerates downwards, bounces off the floor with energy loss (restitution), and leaves a fading orange trail to visualize its path.
+
+![Gameplay Screenshot](./BouncingBall/ball.png)
 
 ### Key Concepts
 
