@@ -118,6 +118,8 @@ stateDiagram-v2
 
 ## Chapter 3: Ping Pong
 
+[**View Gameplay Demo on X 🚀**](https://x.com/PriyanshuS92042/status/2001981221052858504?s=20)
+
 ### Overview
 **Pong in C using SDL2** is a classic Pong game implemented from scratch. This project was built to deeply understand low-level memory manipulation, pointers, real-time game loops, collision physics, and state-driven architecture.
 
