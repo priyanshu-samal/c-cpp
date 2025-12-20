@@ -2,7 +2,9 @@
 #include <SDL2/SDL.h>
 #include <stdio.h>
 
-#undef main   // REQUIRED on Windows + MinGW
+#undef main
+
+void create
 
 int main(void)
 {
@@ -26,26 +28,39 @@ int main(void)
         return 1;
     }
 
+    SDL_Surface *surface = SDL_GetWindowSurface(window);
+
+    SDL_Rect rect = {300, 300, 20, 20};
+    int vx = 4;
+    int vy = 4;
+
     int running = 1;
     SDL_Event event;
 
-    Uint32 last = SDL_GetTicks();
-
     while (running) {
         while (SDL_PollEvent(&event)) {
-            if (event.type == SDL_QUIT) {
+            if (event.type == SDL_QUIT)
                 running = 0;
-            }
         }
 
-        Uint32 now = SDL_GetTicks();
-        if (now - last > 16) { 
-            last = now;
+        
+        rect.x += vx;
+        rect.y += vy;
 
-            /
-        }
+        
+        if (rect.x <= 0 || rect.x + rect.w >= surface->w)
+            vx = -vx;
+        if (rect.y <= 0 || rect.y + rect.h >= surface->h)
+            vy = -vy;
 
-        SDL_Delay(1);
+        
+        SDL_FillRect(surface, NULL, 0x000000);
+
+        
+        SDL_FillRect(surface, &rect, 0xFFFFFFFF);
+
+        SDL_UpdateWindowSurface(window);
+        SDL_Delay(16); 
     }
 
     SDL_DestroyWindow(window);
