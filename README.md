@@ -305,8 +305,12 @@ for (int dy = -radius; dy <= radius; dy++) {
 
 ## Chapter 5: Ray Casting
 
+[**View Gameplay Demo on X 🚀**]()
+
 ### Overview
 **Sharp Rays** is a 2D ray casting engine that demonstrates dynamic lighting and shadows. Unlike standard rasterization, this project casts hundreds of rays from a light source (the "Sun") in all directions. When a ray hits an object (the "Earth"), it stops, creating a shadow behind the object. The simulation renders these rays in real-time, allowing you to drag the Sun and Earth to see the shadows shift instantly.
+
+![Ray Tracing 2D](./RayTracing/raytracing2d.png)
 
 ### Key Concepts
 
@@ -318,10 +322,10 @@ For every frame, the engine emits 720 rays (one every 0.5 degrees) from the cent
 
 ```mermaid
 flowchart LR
-    Source((Sun)) -->|Emit Ray| Step[Step Forward]
-    Step --> Check{Hit Earth?}
-    Check -->|Yes| Stop[Stop Ray (Shadow)]
-    Check -->|No| Draw[Draw Pixel]
+    Source((Sun)) -->|Emit Ray| Step["Step Forward"]
+    Step --> Check{"Hit Earth?"}
+    Check -->|Yes| Stop["Stop Ray (Shadow)"]
+    Check -->|No| Draw["Draw Pixel"]
     Draw --> Step
 ```
 
