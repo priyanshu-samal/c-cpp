@@ -383,6 +383,10 @@ for (int i = 0; i < ray_count; i++) {
 
 ## Chapter 6: Custom Allocator
 
+[**View Gameplay Demo on X**](https://x.com/PriyanshuS92042/status/2004203795035926637)
+
+![Custom Allocator Screenshot](./CoustomCalMal/malloc.png)
+
 ### Overview
 This project builds a **custom memory allocator** from scratch on Windows. It avoids the standard C runtime heap (`malloc`/`free`) to interact directly with the OS kernel via `VirtualAlloc`. This is a deep dive into systems programming, understanding how memory managers work under the hood.
 
@@ -617,6 +621,10 @@ Block 2 | header=00BC0148 | user=00BC0154 | size=1048236 | free=1 | next=0000000
 ---
 
 ## Chapter 7: Dynamic Array
+
+[**View Gameplay Demo on X**](https://x.com/PriyanshuS92042/status/2004933167460090295)
+
+![Dynamic Array Screenshot](./Dynamicarray/dynamicarray.png)
 
 ### Overview
 This project implements a **Dynamic Array** (similar to `std::vector` in C++ or `ArrayList` in Java) in C. C arrays have a fixed size at compilation. A dynamic array solves this by allocating memory on the heap and automatically resizing itself when it gets full.
