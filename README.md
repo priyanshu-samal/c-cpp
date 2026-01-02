@@ -1,4 +1,4 @@
-# C Learning Journey
+# C 
 
 Welcome to my C programming repository. This "book" documents my journey of learning C through practical projects. Each chapter dives into a specific project, explaining the concepts, code, and logic behind it.
 
